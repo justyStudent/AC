@@ -1,0 +1,23 @@
+{
+  "name": "adv_chat",
+  "version": "1.0.0",
+  "description": "AC chat for messages",
+  "main": "server.js",
+  "scripts": {
+    "test": "no",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YWinston/AC.git"
+  },
+  "author": "Efim S",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YWinston/AC/issues"
+  },
+  "homepage": "https://github.com/YWinston/AC#readme",
+  "dependencies": {
+    "ws": "^7.3.0"
+  }
+}

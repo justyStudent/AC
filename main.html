@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+  <html>
+
+    <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="app.css"> 
+      <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <title>Main</title>      
+    </head>
+
+    <body>
+      <header>
+        <h1>Advanced chat</h1>
+        <span id="status">OFFLINE</span>
+      </header>
+
+    <main>
+      
+      <ul id="messages"></ul>
+ 
+      <form id="form">
+        <label for="message">></label>
+        <input type="text" id="input" required autofocus autocomplete="off">
+      </form>
+
+    </main>
+
+      <script type="text/javascript">
+
+      const status = document.getElementById('status');
+      const messages = document.getElementById('messages');
+      const form = document.getElementById('form');
+      const input = document.getElementById('input');
+
+      const ws = new WebSocket('ws://localhost:8080');   
+
+     var value_cookie = readCookie("token");
+
+      function readCookie(name) {
+        var name_cook = name+"=";
+        var spl = document.cookie.split(";");
+
+        for(var i=0; i<spl.length; i++) {
+          var c = spl[i];
+          while(c.charAt(0) == " ") {
+            c = c.substring(1, c.length);
+          }
+
+          if(c.indexOf(name_cook) == 0) {
+            return c.substring(name_cook.length, c.length);
+          }
+        }
+        return null;
+      }      
+
+      var login = '';
+
+      $.ajax({
+        url: "Log.php",
+        method: "POST",
+        contentType: 'application/json',
+        data: JSON.stringify({'text': value_cookie}),
+        success: function(data){
+        	if(data == 'quit'){
+        	alert("Произошёл сбой! Авторизуйтесь...");
+        	location.replace("/Four/index.php");
+        	return 0;
+        	}
+        login = data;
+        login += ': ';
+    }
+});
+
+      function setStatus(value){
+        status.innerHTML = value;
+      }
+
+      function printMessage(value){
+        const li = document.createElement('li');
+        li.innerHTML = value;
+        messages.appendChild(li);
+      }
+
+      var words = ["Exit", "exit", "Q", "Quit", "q", "quit", "Out", "out"];
+      var bot = ["!новости", "!Новости", "!News", "!news"];
+      var point = '';
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        input.value.trim();        
+
+        for(i=0; i<words.length; i++){
+          if(input.value == words[i]){
+            point = input.value;
+            ws.send(point);            
+            location.replace("/Four/index.php");
+            return 0;
+          }else if(input.value == bot[i]){
+            let news = 'news';            
+            $.ajax({
+              url: "bot/parser.php",
+              method: "POST",
+              contentType: 'application/json',
+              data: JSON.stringify({text: news}),
+              success: function(data){
+                data = JSON.parse(data);
+                point = 'Полученные новости: ' + '</br>';
+                for (i = 1; i<11; i++){
+                  point += i + '. ' + data[i] + '.' + '</br>';
+                }
+                ws.send(point);
+                point = '';
+                input.value = '';
+              }
+            });
+            return 0; 
+          }
+        }
+        point = login;
+        point += input.value;
+        ws.send(point);      
+        input.value = '';
+        point = '';
+      });
+
+      ws.onopen = () => setStatus('ONLINE');
+
+      ws.onclose = () => setStatus('DISCONNECTED');
+
+      ws.onmessage = response => printMessage(response.data);
+
+      </script>
+    </body>
+  </html>
