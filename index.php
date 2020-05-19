@@ -65,7 +65,7 @@ if( isset($data['do_login']))
 		<div class="container mt-5" align="center">
 			<h1 align="center" style = "height: 70px;"><font color="#FFCC00">Авторизация</font></h1>
 
-				<form  action="/Four/index.php" method="POST">
+				<form  action="index.php" method="POST">
 					<p>
 						<p1></p1>
 						<input class="form-control" autocomplete="off" style = "width: 270px; height:50px;" placeholder="Логин" type="text" name="login" value="<?php echo @$data['login']; ?>">
@@ -78,7 +78,7 @@ if( isset($data['do_login']))
 					<p>
 						<button class="btn btn-outline-warning" type="submit" name="do_login" style = "width: 100px; height: 47px;">Войти</button>
 					</p>
-					<a href="/Four/register.php" style="color: #CC9900">Нет аккаунта?</a>					
+					<a href="register.php" style="color: #CC9900">Нет аккаунта?</a>					
 				</form>
 		</div>
 	</body>
