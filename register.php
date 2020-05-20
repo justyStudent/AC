@@ -72,7 +72,7 @@ require ('includes/db.php');
 			<div class="container mt-5">
 					<h1 align="center"><font color="#FFCC00">РЕГИСТРАЦИЯ</font></h1>
 
-				<form align="center" action="/Four/register.php" method="POST">
+				<form align="center" action="register.php" method="POST">
 					<div align="center">					
 						<p><font color="#CC9900">Ваш логин:</font></p>
 						<input style = "width: 250px; height: 49px;" placeholder="Поле ввода" class="form-control" type="text" name="login" value="<?php echo @$data['login']; ?>">					
@@ -97,7 +97,7 @@ require ('includes/db.php');
 							<button class="btn btn-outline-warning" style = "width: 250px; height: 49px;" type="submit" name="do_signup">Зарегистрироваться</button>
 						</div>
 					</p>
-					<p> <a href="/Four/index.php"><font color="#CC9900">Уже зарегистрированы?</font></a> </p>
+					<p> <a href="index.php"><font color="#CC9900">Уже зарегистрированы?</font></a> </p>
 				</form>
 			</div>
 		</body>	
