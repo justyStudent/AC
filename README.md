@@ -2,7 +2,7 @@
 Chat with features
 ____
 ### Установка на Ubuntu
-* ul Установить Lamp.
+* Установить Lamp.
 Перед установкой нужно обновить локальный индекс пакетов.
 > sudo apt update
 
@@ -36,24 +36,24 @@ ____
 
 >FLUSH PRIVILEGES;
 
-* ul Импортировать базу данных из дампа [AC-chat](https://github.com/YWinston/AC)
-* ul Установить git.
+* Импортировать базу данных из дампа [AC-chat](https://github.com/YWinston/AC)
+* Установить git.
 >sudo apt install git
 
-* ul Установить NodeJS.
+* Установить NodeJS.
 >sudo apt install nodejs
 
-* ul Установить NPM.
+* Установить NPM.
 >sudo apt install npm
 
-* ul Клонирование репозитория.
+* Клонирование репозитория.
 В папке, в которой вы хотите расположить проект выполните:
 > git clone https://github.com/YWinston/AC.git
 
-* ul Установите необходимые модули.
+* Установите необходимые модули.
 >npm install
 
-* ul Установить модуль pm2.
+* Установить модуль pm2.
 > sudo npm install pm2 -g
 
 Настройте автозапуск приложения.
