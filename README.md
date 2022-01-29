@@ -1,10 +1,5 @@
 # AC
 Chat with features
-
-## Последние изменения.
-[Release](https://github.com/YWinston/AC/releases/tag/v-1.0.0)
-
-![ ](https://app.buddy.works/efim999/ac/pipelines/pipeline/263411/badge.svg?token=59190e75c1cae0ef8c4f647f1bdd6f66d29a3f7c1f77a3bf073399db9da0e1fd)
 ____
 ### Руководство по установки для пользователя:
 Перейдите по адресу [AC.com](http://95.217.212.188/AC/)
